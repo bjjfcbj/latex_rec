@@ -1,0 +1,148 @@
+\documentclass[UTF8]{ctexart}
+\title{daydayup}
+\author{drmin}
+\date{\today}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}%页边距
+\geometry{a4paper}
+\geometry{left=1cm,right=2cm,top=3cm,bottom=4cm}
+\usepackage{fancyhdr}%页眉页脚
+\pagestyle{fancy}
+\lhead{\author}
+\chead{\date}
+\rhead{222}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headwidth}{\textwidth}
+\renewcommand{\footrulewidth}{0pt}
+\usepackage{setspace}%行间距
+\onehalfspacing
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\section{exampleOFlatex}
+latex这部分需要对着tex文件看源码和注释。
+\subsection{math}
+\subsubsection{上下标与公式环境}
+行内$x=y$公式以及行间公式：\[x=y\]
+行间公式编号(\^{} 为上标，\_{}为下标)：
+%要写成\^{}的形式，不然会与后一字符重叠
+\begin{equation}
+x_n=y^2
+\end{equation}
+\begin{equation}
+y^{n1,n2,n3}=x_{n1,n2,n3}
+\end{equation}
+\subsubsection{运算符}
+根式用\texttt{\char`\\}sqrt\{.\}表示,分式用\texttt{\char`\\}frac\{.\}\{.\}表示(前为分子，后为分母)
+%\的输出就是这么麻烦，命令\texttt{}使用tt字体环境，\char`加字符表示输出ASCII字符，保留字符前应该添加反斜杠\
+\begin{equation}
+\sqrt{x}=\frac{y}{z}
+\end{equation}
+注意分式在行间行内显示效果不同(大小区别):$\frac{y}{z}$
+	
+然后是其他常用需要命令生成的运算符：\[ \pm\;\times\;\div\;\cdot\;\cap\;\cup\;\geq\;\leq\;\neq\;\approx\;\equiv\;\sum;\prod;\lim;\int \]
+其中行内行间表现不同(可以用\texttt{\char`\\}limits以及\texttt{\char`\\}nolimits调整压缩)：
+	
+$ \sum_{i=1}^n i\quad \prod_{i=1}^n $
+$ \sum\limits _{i=1}^n i\quad \prod\limits _{i=1}^n $
+\[ \lim_{x\to0}x^2 \quad \int_a^b x^2 dx \]
+\[ \lim\nolimits _{x\to0}x^2\quad \int\nolimits_a^b x^2 dx \]
+		
+多重积分符号：\[ \iint\quad \iiint\quad \iiiint\quad \idotsint \]
+		
+\subsubsection{定界符，省略符，矩阵}
+诸如(),[],\{\}之类的符号及大小控制：
+\[ \Biggl(\biggl(\Bigl(\bigl((x)\bigr)\Bigr)\biggr)\Biggr) \]
+\[ \Biggl[\biggl[\Bigl[\bigl[[x]\bigr]\Bigr]\biggr]\Biggr] \]
+\[ \Biggl \{\biggl \{\Bigl \{\bigl \{\{x\}\bigr \}\Bigr \}\biggr \}\Biggr\} \]
+\[ \Biggl\langle\biggl\langle\Bigl\langle\bigl\langle\langle x
+\rangle\bigr\rangle\Bigr\rangle\biggr\rangle\Biggr\rangle \]
+\[ \Biggl\lvert\biggl\lvert\Bigl\lvert\bigl\lvert\lvert x
+\rvert\bigr\rvert\Bigr\rvert\biggr\rvert\Biggr\rvert \]
+\[ \Biggl\lVert\biggl\lVert\Bigl\lVert\bigl\lVert\lVert x
+\rVert\bigr\rVert\Bigr\rVert\biggr\rVert\Biggr\rVert \]
+\[ x_1,x_2,\dots ,x_n\quad 1,2,\cdots ,n\quad \vdots\quad \ddots \]
+\[ \begin{pmatrix} a&b\\c&d \end{pmatrix} \quad
+\begin{bmatrix} a&b\\c&d \end{bmatrix} \quad
+\begin{Bmatrix} a&b\\c&d \end{Bmatrix} \quad
+\begin{vmatrix} a&b\\c&d \end{vmatrix} \quad
+\begin{Vmatrix} a&b\\c&d \end{Vmatrix} \]
+以及行内小矩阵$ ( \begin{smallmatrix} a&b\\c&d \end{smallmatrix} ) $.
+
+\subsubsection{公式格式}
+多行公式(非对齐)：
+\begin{multline}
+	x=\\
+	a+b+c+\\
+	h+i+\\
+	d+e+f+g
+\end{multline}
+对齐多行公式(必须在数学环境中)：
+\[\begin{aligned}
+	x ={}& a+b+c+{} \\
+	&d+e+f+g
+\end{aligned}\]
+公式组：
+\begin{gather}
+	a = b+c+d \\
+	x = y+z
+\end{gather}
+\begin{align}
+	a &= b+c+d \\
+	x &= y+z
+\end{align}
+分段函数：
+\[ y= \begin{cases}
+	-x,\quad x\leq 0 \\
+	x,\quad x>0
+\end{cases} \]
+\subsection{图片,表格}
+\subsubsection{图片}
+\includegraphics[width=.5\linewidth]{timg.jpg}
+
+\subsubsection{表格}
+\begin{tabular}{|l|c|r|}
+	\hline
+	操作系统& 发行版& 编辑器\\
+	\hline
+	Windows & MikTeX & TexMakerX \\
+	\hline
+	Unix/Linux & teTeX & Kile \\
+	\hline
+	Mac OS & MacTeX & TeXShop \\
+	\hline
+	通用& TeX Live & TeXworks \\
+	\hline
+\end{tabular}
+\begin{tabular}{|c|r|c|r|}
+	\hline
+	latex命令& 输出& latex命令& 输出\\
+	\hline
+	\textbackslash\# & \# & \textbackslash\$ & \$ \\
+	\hline
+	\textbackslash\% & \% & \textbackslash\{ & \{ \\
+	\hline
+	\textbackslash\} & \} & \textbackslash\~{}\{\} & \~{} \\
+	\hline
+	\textbackslash\_{}\{\} & \_{} & \textbackslash\^{}\{\} & \^{} \\
+	\hline
+	\textbackslash textbackslash & \textbackslash & \textbackslash\& & \& \\
+	\hline
+\end{tabular}
+
+\subsubsection{浮动体}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.3\linewidth]{timg.jpg}
+	\caption{有图有真相}
+	\label{fig:myphoto}
+\end{figure}
+
+\end{document}
